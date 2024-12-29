@@ -4,21 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form User</title>
+    <title>Edit User</title>
 </head>
 
 <body>
     <div align="center">
-        <h2>Add user</h2>
-        <form method="post" action="/adduser">
+        <h2>Edit user</h2>
+        <form method="post" action="/updateuser">
+            <input type="hidden" name="editid" value="<%= single.id %>">
             <table border="1">
                 <tr>
                     <td>Name:-</td>
-                    <td> <input type="text" name="username"></td>
+                    <td> <input type="text" name="username" value="<%= single.name %>"></td>
                 </tr>
                 <tr>
                     <td>Phone:-</td>
-                    <td><input type="text" name="userphone"></td>
+                    <td><input type="text" name="userphone" value="<%= single.phone %>"></td>
                 </tr>
                 <tr>
                     <td></td>

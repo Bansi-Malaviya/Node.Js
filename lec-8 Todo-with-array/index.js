@@ -5,7 +5,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 let record = [];
 app.get('/', (req, res) => {
-    return res.render('table',{
+    return res.render('table', {
         record
     });
 })
@@ -22,6 +22,28 @@ app.post('/adduser', (req, res) => {
     record.push(obj);
     console.log("successfully register");
     return res.redirect('/');
+})
+
+app.get('/edituser', (req, res) => {
+    let id = req.query.id;
+    let single = record.find(val => val.id == id);
+    return res.render('edit', {
+        single
+    });
+})
+
+app.post('/updateuser', (req, res) => {
+    const { editid, username, userphone } = req.body;
+    let up = record.map((val) => {
+        if (val.id == editid) {
+            val.name = username
+            val.phone = userphone
+        }
+        return val;
+    })
+    record = up;
+    console.log("successfully update");
+    return res.redirect('/')
 })
 
 app.get('/deleteuser', (req, res) => {
