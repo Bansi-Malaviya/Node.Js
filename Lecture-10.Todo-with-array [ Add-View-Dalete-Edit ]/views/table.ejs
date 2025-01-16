@@ -9,7 +9,7 @@
 
 <body>
     <div align="center">
-        <h2>View user</h2>
+        <h2>View User</h2>
         <table border="1">
             <thead>
                 <tr>
@@ -22,20 +22,13 @@
             <tbody>
                 <% record.map((val, i)=> { %>
                     <tr>
-                        <td>
-                            <%= ++i %>
-                        </td>
-                        <td>
-                            <%= val.name %>
-                        </td>
-                        <td>
-                            <%= val.phone %>
-                        </td>
+                        <td><%= ++i %></td>
+                        <td><%= val.name %></td>
+                        <td><%= val.phone %></td>
                         <td>
                             <a href="/deleteuser?deleteId=<%= val.id %>">Delete</a>
                             <a href="/edituser?id=<%= val.id %>">Edit</a>
                         </td>
-
                     </tr>
                     <% }) %>
             </tbody>
