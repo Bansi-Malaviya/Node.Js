@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View User</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .btn {
+            border-radius: 5px;
+        }
+
+        .btn-outline-primary {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .text-center a {
+            text-decoration: none;
+        }
+
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .table th, .table td {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12 col-sm-12">
+                <h1 class="text-center mb-4 text-secondary">View User</h1> 
+
+                
+                <table class="table table-bordered table-hover border-dark"> 
+                    <thead class="bg-secondary  text-white"> 
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Book Name</th>
+                            <th scope="col">Book Price</th>
+                            <th scope="col">Book Pages</th>
+                            <th scope="col">Book Author</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% record.map((val, i) => { 
+                            const { id, bookname, bookprice, bookpages, bookauthor } = val; %>
+                            <tr>
+                                <th scope="row"><%= ++i %></th>
+                                <td><%= bookname %></td>
+                                <td><%= bookprice %></td>
+                                <td><%= bookpages %></td>
+                                <td><%= bookauthor %></td>
+                                <td>
+                                    <a href="/editRecord?id=<%= id %>" class="btn btn-sm btn-primary">Edit</a> 
+                                    <a href="/deletRecord?deletId=<%= id %>" class="btn btn-sm btn-outline-primary">Delete</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+
+                
+                <div class="text-center">
+                    <a href="/" class="btn btn-secondary">Add New Book</a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
