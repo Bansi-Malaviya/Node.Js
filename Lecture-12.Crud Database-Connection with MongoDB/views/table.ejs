@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .user-card {         
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .user-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .user-card h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .user-card p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .action-links-dalete , .action-links-edit {
+            margin: 25px 5px 15px 5px;
+        }
+
+        .action-links-dalete a {
+            text-decoration: none;
+            border: 0;
+            color: #ffffff;
+            background-color: red;
+            margin: 0 5px;
+            padding: 7px 15px;
+            border-radius: 3px;
+        }   
+        .action-links-edit a {
+            text-decoration: none;
+            border: 0;
+            color: #ffffff;
+            background-color: rgb(1, 154, 215);
+            margin: 0 5px;
+            padding: 7px 15px;
+            border-radius: 3px;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+        }
+
+        .add-button {
+            display: block;
+            width: 150px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            margin: 35px auto;
+            transition: background-color 0.3s;
+        }
+
+        .add-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>View Users</h2>
+    <div class="container">
+        <% allrecord.map((val, index) => { %>
+            <div class="user-card">
+                <img src="<%= val?.image %>" alt="User  Image" />
+                <h3><%= val?.username %></h3>
+                <p><strong>Email:</strong> <%= val?.useremail %></p>
+                <p><strong>Password:</strong> <%= val?.userpassword %></p>
+                <p><strong>Gender:</strong> <%= val?.gender %></p>
+                <p><strong>Hobby:</strong> <%= val?.hobby %></p>
+                <p><strong>City:</strong> <%= val?.city %></p>
+<div class="btn">
+    <div class="action-links-dalete">
+        <a href="/deleteuser?did=<%= val?.id %>">Delete</a>
+    </div>
+    <div class="action-links-edit">
+        <a href="/edituser?eid=<%= val?.id %>">Edit</a>
+    </div>
+</div>
+            </div>
+        <% }) %>
+    </div>
+    <a href="/" class="add-button">Add User</a>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 800;
+            font-size: 30px;
+            color: #4CAF50;
+            margin: 0 0 20px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f7f7f7;
+            font-size: 14px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4CAF50;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .radio-group input,
+        .checkbox-group input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Edit User</h2>
+        <form method="post" action="/updateuser" enctype="multipart/form-data">
+            <input type="hidden" name="editid" value="<%= single?.id %>">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" value="<%= single?.username %>">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" value="<%= single?.useremail %>">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" name="password" value="<%= single?.userpassword %>">
+            </div>
+
+            <div class="form-group radio-group">
+                <label>Gender:</label>
+                <label><input type="radio" <% if(single?.gender=="male" ) { %> checked <% } %> name="gender"
+                        value="male">Male</label>
+                <label><input type="radio" <% if(single?.gender=="female" ) { %> checked <% } %> name="gender"
+                        value="female">Female</label>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <label>Hobbies:</label>
+                <label> <input type="checkbox" <% if(single?.hobby.includes("cricket")) { %> checked <% } %>
+                        name="hobby" value="cricket">Cricket</label>
+                <label> <input type="checkbox" <% if(single?.hobby.includes("music")) { %> checked <% } %>
+                        name="hobby" value="music">Music</label>
+                <label><input type="checkbox" <% if(single?.hobby.includes("travelling")) { %> checked <% } %>
+                        name="hobby" value="travelling">Travelling</label>
+            </div>
+
+            <div class="form-group">
+
+                <label for="city">City</label>
+                <select name="city">
+                    <option value="">---select city---</option>
+                    <% city = ["SURAT", "AHEMADABAD", "RAJKOT", "MUMBAI"]; city.map((c) => { %>
+                        <option <% if(single?.city==c) { %> selected
+                            <% } %> value="<%= c %>">
+                                    <%= c %>
+                        </option>
+                        <% }) %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Upload Image</label>
+                <input type="file" name="image">
+                <img src="<%= single?.image %>" width="100" alt="">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
+        <div class="footer">
+            <a href="/viewuser">View User</a>
+        </div>
+    </div>
+</body>
+
+</html>
