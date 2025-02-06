@@ -27,7 +27,7 @@
 
         h2 {
             text-align: center;
-            font-weight: 800 ;
+            font-weight: 800;
             font-size: 30px;
             color: #4CAF50;
             margin: 0 0 20px 0;
@@ -44,7 +44,9 @@
             margin-bottom: 5px;
         }
 
-        input[type="text"], input[type="file"], select {
+        input[type="text"],
+        input[type="file"],
+        select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -53,7 +55,8 @@
             font-size: 14px;
         }
 
-        input[type="radio"], input[type="checkbox"] {
+        input[type="radio"],
+        input[type="checkbox"] {
             margin-right: 5px;
         }
 
@@ -87,12 +90,14 @@
             text-decoration: underline;
         }
 
-        .radio-group, .checkbox-group {
+        .radio-group,
+        .checkbox-group {
             display: flex;
             gap: 10px;
         }
 
-        .radio-group input, .checkbox-group input {
+        .radio-group input,
+        .checkbox-group input {
             margin-right: 5px;
         }
     </style>
@@ -103,9 +108,11 @@
     <div class="container">
         <h2>Add User</h2>
         <form method="post" action="/adduser" enctype="multipart/form-data">
-            
+
             <div class="form-group">
                 <label for="name">Name</label>
+
+                
                 <input type="text" name="name" id="name" required placeholder="Enter your name">
             </div>
 
@@ -136,9 +143,11 @@
                 <label for="city">City</label>
                 <select name="city" id="city" required>
                     <option value="">--- Select City ---</option>
-                    <% city = ["SURAT", "AHEMADABAD", "RAJKOT", "MUMBAI"]; city.map((c) => { %>
-                        <option value="<%= c %>"><%= c %></option>
-                    <% }) %>
+                    <% city=["SURAT", "AHEMADABAD" , "RAJKOT" , "MUMBAI" ]; city.map((c)=> { %>
+                        <option value="<%= c %>">
+                            <%= c %>
+                        </option>
+                        <% }) %>
                 </select>
             </div>
 
@@ -159,4 +168,4 @@
 
 </body>
 
-</html>
+</html> 

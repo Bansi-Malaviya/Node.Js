@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Your Info</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        .table th {
+            background-color: #ff000d;
+            color: white;
+            text-align: center;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-btns a {
+            margin: 5px;
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+        }
+
+        .btn-edit {
+            background: #28a745;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+        .btn-edit:hover {
+            background: #218838;
+        }
+
+        .btn-nav {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>View Your Info</h1>
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>Cover</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% all.map((val) => { %>
+                    <tr>
+                        <td><img src="<%= val?.image %>" width="100" class="img-thumbnail" alt=""></td>
+                        <td><%= val?.name %></td>
+                        <td><%= val?.description %></td>
+                        <td><%= val?.price %></td>
+                        <td class="action-btns">
+                            <a href="/movie/deletedata?delId=<%= val?.id %>" class="btn-delete">Delete</a>
+                            <a href="/movie/editdata?editId=<%= val?.id %>" class="btn-edit">Edit</a>
+                        </td>   
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="/movie/add" class="btn btn-primary btn-nav">Add</a>
+            <a href="/" class="btn btn-secondary btn-nav">Home</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
