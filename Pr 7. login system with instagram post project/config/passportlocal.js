@@ -1,11 +1,11 @@
 const passport = require('passport');
 const passportLocal = require('passport-local').Strategy;
-const UserModel = require('../models/usersModel');
+const {users} = require('../models/usersModel');
 passport.use(new passportLocal({
     usernameField: 'email',
 }, async (email, password, done) => {
     try {
-        let user = await UserModel.findOne({ email: email });
+        let user = await users.findOne({ email: email });
         if (!user || user.password != password) {
             console.log("Email and Password not valid");
             return done(null, false)
@@ -23,7 +23,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
     try {
-        const user = await UserModel.findById(id);
+        const user = await users.findById(id);
         return done(null, user)
     } catch (err) {
         return done(null, false);

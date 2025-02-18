@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/bloglogin-passport');
+mongoose.connect('mongodb://localhost/blog-login-passport');
 
 const db = mongoose.connection;
 

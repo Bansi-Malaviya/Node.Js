@@ -1,4 +1,4 @@
-const userModel = require('../models/usersModel')
+const {users} = require('../models/usersModel')
 const fs = require('fs');
 const registerPage = (req,res) => {
     return res.render('register');
@@ -13,13 +13,6 @@ const loginPage = (req,res) => {
 
 const loginUser = async (req,res) => {
     try{
-        const { email, password } = req.body;
-        const user = await userModel.users.findOne({ email : email });
-
-        if(!user || user.password != password){
-            console.log(`Email Or Password is incorrect`);
-            return res.redirect('/');
-        }
         return res.redirect('/dashboard');
     }catch(err){
         console.log(err);
@@ -30,7 +23,8 @@ const loginUser = async (req,res) => {
 const registerUser = async (req,res) => {
     try{
         const {name,email,password} = req.body;
-        await userModel.users.create({
+        
+        await users.create({
             name : name,
             email : email,
             password : password
@@ -45,7 +39,7 @@ const registerUser = async (req,res) => {
 
 const dashboardPage = async (req, res) => {
     try {
-        const record = await ProUser.find({});
+        const record = await users.find({});
         return res.render('dashboard', { record });
     } catch (err) {
         console.log(err);
@@ -59,7 +53,7 @@ const addBlogPage = (req,res) => {
 const viewBlogPage = async(req,res) => {
     try{
         return res.render('viewBlog',{
-            allBlogs : await userModel.blogUser.find()
+            allBlogs : await users.find()
         });
     }catch(err){
         console.log(err);
@@ -75,7 +69,7 @@ const addBlogData = async (req,res) => {
         console.log(req.file);
         
 
-        await userModel.blogUser.create({
+        await users.create({
             title : title,
             description : description,
             image : req.file?.path
@@ -90,10 +84,10 @@ const addBlogData = async (req,res) => {
 
 const deleteBlogData = async (req,res) => {
     try{
-        let single = await userModel.blogUser.findById(req.query.delId)
+        let single = await users.findById(req.query.delId)
         fs.unlinkSync(single?.image);
 
-        await userModel.blogUser.findByIdAndDelete(req.query.delId);
+        await users.blogUser.findByIdAndDelete(req.query.delId);
         console.log(`Data Successfully deleted..!`);
         return res.redirect('/viewblogpage');
     }catch(err){
@@ -105,7 +99,7 @@ const deleteBlogData = async (req,res) => {
 const editBlogData = async (req,res) => {
     try{
         return res.render('editBlog',{
-            oneRow : await userModel.blogUser.findById(req.query.editId)
+            oneRow : await users.findById(req.query.editId)
         })
     }catch(err){
         console.log(err);
@@ -118,9 +112,9 @@ const updateBlogData = async (req,res) => {
         const { editId, title, description } = req.body;
         
         if(req.file){
-            let oneRow = await userModel.blogUser.findById(editId);
+            let oneRow = await users.findById(editId);
             fs.unlinkSync(oneRow?.image);
-            await userModel.blogUser.findByIdAndUpdate(editId,{
+            await users.blogUser.findByIdAndUpdate(editId,{
                 title : title,
                 description : description,
                 image : req.file?.path
@@ -128,7 +122,7 @@ const updateBlogData = async (req,res) => {
             console.log("Data Successfully updated..!");
             return res.redirect('/viewblogpage');
         }else{
-            await userModel.blogUser.findByIdAndUpdate(editId,{
+            await users.findByIdAndUpdate(editId,{
                 title : title,
                 description : description,
                 image : req.file?.path

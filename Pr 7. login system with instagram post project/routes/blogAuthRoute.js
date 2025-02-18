@@ -12,7 +12,7 @@ routes.get('/register',registerPage);
 routes.get('/',loginPage);
 routes.post('/loginuser',passport.authenticate('local',{failureRedirect:'/'}),loginUser)
 routes.post('/registeruser',registerUser);
-routes.get('/dashboard', passport.checkUser,dashboardPage);
+routes.get('/dashboard',dashboardPage);
 routes.get('/logoutuser', logoutUser);
 routes.get('/addblogpage', passport.checkUser,addBlogPage);
 routes.get('/viewblogpage', passport.checkUser,viewBlogPage);
