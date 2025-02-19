@@ -44,13 +44,33 @@
             border-color: #8D6E63;
         }
 
-        .btn {
+        .blog-btn {
             background-color: #795548; /* Light chocolate button */
             border: none;
             color: white;
+            padding: 9px 20px;
+            margin: 10px 25px;
+            border-radius: 10px;
         }
 
-        .btn:hover {
+        .blog-btn:hover {
+            background-color: #795548dc; /* Darker chocolate on hover */
+            color: #ffffff;
+        }
+
+        .blog-bttn {
+            background-color: #795548; /* Light chocolate button */
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px 25px;
+            border-radius: 10px;
+        }
+
+        a.blog-bttn {
+            text-decoration: none;
+        }
+        .blog-bttn:hover {
             background-color: #795548dc; /* Darker chocolate on hover */
             color: #ffffff;
         }
@@ -90,7 +110,10 @@
                     <input type="password" name="password" class="form-control" required>
                 </div>
 
-                <button type="submit" class="btn btn w-100">Register</button>
+                <div align="center">
+                    <button type="submit" class="blog-btn w-30">Register</button>
+                   <a href="/" class="blog-bttn w-30">Login</a>
+                </div>
             </form>
         </div>
 

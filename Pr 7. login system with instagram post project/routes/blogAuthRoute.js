@@ -12,10 +12,10 @@ routes.get('/register',registerPage);
 routes.get('/',loginPage);
 routes.post('/loginuser',passport.authenticate('local',{failureRedirect:'/'}),loginUser)
 routes.post('/registeruser',registerUser);
-routes.get('/dashboard',dashboardPage);
+routes.get('/dashboard',passport.checkUser,dashboardPage);
 routes.get('/logoutuser', logoutUser);
-routes.get('/addblogpage', passport.checkUser,addBlogPage);
-routes.get('/viewblogpage', passport.checkUser,viewBlogPage);
+routes.get('/addblogpage',addBlogPage);
+routes.get('/viewblogpage',viewBlogPage);
 
 
 const st = multer.diskStorage({

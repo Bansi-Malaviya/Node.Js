@@ -27,6 +27,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+
         .nav a {
             color: white;
             text-decoration: none;
@@ -50,6 +51,11 @@
 
         .button:hover {
             background-color: #5d4037;
+        }
+        
+        h2{
+            color: #795548;
+            font-weight: 600;
         }
 
         .blog-container {
@@ -176,7 +182,7 @@
             <a href="/logoutuser" class="button">Logout</a>
         </header>
 
-        <h1 class="my-3">Your Blogs</h1>
+        <h2 class="my-3">Your Blogs</h2>
 
         <div class="blog-container">
             <% allBlogs.map((val)=> { %>

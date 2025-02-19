@@ -10,40 +10,63 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            color: #fff;
+            color: #4a4a4a;
+            background-color: #f5ebe0;
         }
 
+        h2{
+            color: #795548;
+            font-weight: 600;
+        }
         .container {
-            max-width: 600px;
+            max-width: 500px;
+            margin-top: 50px;
         }
 
         .card {
+            background-color: #EFEBE9;
+            /* Soft beige card */
+            color: #4E342E;
+            /* Medium brown text */
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .form-control, .form-control:focus {
-            border-radius: 8px;
-            border: 1px solid #ced4da;
+        .form-label {
+            color: #5D4037;
+            /* Warm brown labels */
         }
 
-        .btn-primary {
-            width: 100%;
-            border-radius: 8px;
-            font-weight: bold;
-            padding: 10px;
+        .form-control {
+            background-color: #ffffff;
+            /* Light cream input */
+            border: 1px solid #BCAAA4;
+            /* Subtle brown border */
+            color: #4E342E;
         }
 
-        .btn-primary:hover {
-            background-color: #0A4C8F;
+        .form-control:focus {
+            background-color: #FFFFFF;
+            color: #4E342E;
+            box-shadow: none;
+            border-color: #8D6E63;
         }
 
-        .image-preview {
-            display: block;
-            margin-top: 10px;
-            border-radius: 8px;
+        .btn {
+            background-color: #795548;
+            /* Light chocolate button */
+            border: none;
+            color: white;
         }
+
+        .btn:hover {
+            background-color: #795548dc;
+            /* Darker chocolate on hover */
+            color: #ffffff;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -71,7 +94,9 @@
                     <img src="<%= oneRow?.image %>" width="100" class="image-preview" alt="Current Image">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update Blog</button>
+               <div align="center">
+                    <button type="submit" class="btn w-50 m">Update Blog</button>
+               </div>
             </form>
         </div>
 
