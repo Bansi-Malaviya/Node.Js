@@ -67,8 +67,6 @@ const addBlogData = async (req,res) => {
         console.log(title);
         console.log(description);
         console.log(req.file);
-        
-
         await users.create({
             title : title,
             description : description,
