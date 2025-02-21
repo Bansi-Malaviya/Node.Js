@@ -7,7 +7,7 @@ const registerPage = (req, res) => {
 }
 
 const loginPage = (req, res) => {
-    if (req.locals?.users) {
+    if (res.locals?.users) {
         return res.redirect('/dashboard');
     }
     return res.render('login');
@@ -144,8 +144,13 @@ const updateBlogData = async (req, res) => {
 }
 
 const logoutUser = (req, res) => {
-   
+    req.logout((err)=>{
+        if(err){
+            console.log(err);
+        }
     return res.redirect('/');
+
+    })
 }
 
 module.exports = {
