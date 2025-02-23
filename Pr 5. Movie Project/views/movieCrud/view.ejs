@@ -78,7 +78,7 @@
         <h1>View Your Info</h1>
         <table class="table table-bordered text-center">
             <thead>
-                <tr>
+                <tr>                    
                     <th>Cover</th>
                     <th>Name</th>
                     <th>Description</th>
@@ -86,10 +86,10 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <% all.map((val) => { %>
                     <tr>
-                        <td><img src="<%= val?.image %>" width="100" class="img-thumbnail" alt=""></td>
+                        <td><img src="<%= val?.image %>" width="200" class="img-thumbnail" alt=""></td>
                         <td><%= val?.name %></td>
                         <td><%= val?.description %></td>
                         <td><%= val?.price %></td>
