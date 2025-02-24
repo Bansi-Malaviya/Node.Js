@@ -14,8 +14,8 @@ const passport = require('passport');
 const passportLocal = require('./config/passportLocal');
 const session = require('express-session');
 app.use(session({
-    name: 'admin-penal',
-    secret: 'admin-penal',
+    name: 'rnw',
+    secret: 'rnw4',
     saveUninitialized: true,
     resave: true,
     cookie: {
@@ -25,6 +25,17 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setUser)
+
+
+//flash message start
+const flash = require('connect-flash');
+app.use(flash());
+app.use('/', (req, res, next) => {
+    res.locals.message = req.flash();
+    return next();
+})
+//flash message end
+
 app.use('/', require('./routes/indexRoute'));
 
 app.listen(port, (err) => {
